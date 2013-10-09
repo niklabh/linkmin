@@ -1,8 +1,11 @@
 "use strict";
+
+// look for monitoring
+require('look').start();
+
 /**
  * Module dependencies.
  */
-
 var express = require('express');
 var http = require('http');
 var path = require('path');
