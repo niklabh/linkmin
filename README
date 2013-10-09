@@ -1,0 +1,40 @@
+# miniUrl
+
+miniUrl is a simple url shortner written in node.js, expressjs and redis technologies
+
+# Installation
+
+	nginx
+
+	install node.js
+	[http://nodejs.org]
+	install redis
+	[http://redis.io]
+
+	git clone repo
+	cd into/repo
+	npm install
+	node app
+
+
+# Usage
+
+	UI Module
+
+	Engine Module
+
+# Still to do
+
+	User Auth
+	etc et al.
+
+#  Author
+	
+	Nikhil Ranjan
+	@niklabh
+	Software Engineer -> Node.js
+
+
+
+
+

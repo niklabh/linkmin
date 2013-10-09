@@ -1,0 +1,25 @@
+{
+  "name": "miniUrl",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js",
+    "test": "nodeunit test"
+  },
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "redis": "*",
+    "request": "*",
+    "underscore": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/niklabh/miniUrl.git"
+  },
+  "devDependencies": {
+    "look": "*",
+    "promise": "git://github.com/kriszyp/node-promise.git",
+    "nodeunit": "*"
+  },
+  "author": "Nikhil Ranjan @niklabh811@gmail.com"
+}
