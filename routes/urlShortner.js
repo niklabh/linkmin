@@ -16,22 +16,22 @@ var urlShortner = {
     var key = req.params.key;
     var response = {};
 
-    redis.hget(URLS, key, function (error, result) {
-        if (!error && result) {
-          response = {
-            result: 'failure',
-            message: 'Failed to get URL',
-            reason: err.message || 'Unknown problem'
-          };
-        } else {
-          response = {
-            result: 'success',
-            shorturl: '' + req.protocol + req.host + '/' + key,
-            longUrl: result
-          };
-        }
-        res.json(response);
-      });
+    redis.hget(URLS, key, function (err, result) {
+      if (!error && result) {
+        response = {
+          result: 'success',
+          shorturl: '' + req.protocol + req.host + '/' + key,
+          longUrl: result
+        };
+      } else {
+        response = {
+          result: 'failure',
+          message: 'Failed to get URL',
+          reason: err.message || 'Unknown problem'
+        };
+      }
+      res.json(response);
+    });
 	},
 
   // create a new shortened url
@@ -61,7 +61,7 @@ var urlShortner = {
           message: 'Created shortened Url',
           url: '' + req.protocol + req.host + '/' + key,
           longUrl: url
-        }
+        };
       }
       res.json(response);
     });
@@ -79,6 +79,8 @@ var urlShortner = {
     if (!req.body.key)
       return next(new Error("Missing param key"));
 
+    var key = req.body.key + '';
+    
     var response = {};
     
     redis.hdel(URLS, key, function(err){
@@ -94,7 +96,7 @@ var urlShortner = {
           result: 'success',
           message: 'Deleted shortened Url',
           url: '' + req.protocol + req.host + '/' + key,
-        }
+        };
       }
       res.json(response);
     });

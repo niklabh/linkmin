@@ -3,18 +3,29 @@
 "use strict";
 
 var util = require('util');
+var redis = require('./lib/redis');
+
+var URLS = 'urls';
 
 ///////////////////////// Module //////////////////////////////
-// UI Controller ( part 1)
+// UI Controller
 var processor = {
   // handle all requests
   index: function (req, res, next) {
-    res.send("Awsome HomePage");
+    res.send("Awesome HomePage");
   },
 
   // url redirector
   redirector: function (req, res, next) {
-    res.send("You will be redirected shortly");
+    var key = req.params.key + '';
+
+    redis.hget(URLS, key, function (error, result) {
+      if (!error && result) {
+        res.redirect(result);
+      } else {
+        res.send(404, "Oops! You have found a dead link!!");
+      }
+    });
   },
 
   // error handler to reverse cart checkout
