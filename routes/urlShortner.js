@@ -2,7 +2,7 @@
 "use strict";
 
 var util = require('util');
-var keyGen = require('./lib/urlUtil').randomString;
+var keyGen = require('./lib/urlUtils').randomString;
 var redis = require('./lib/redis');
 
 var URLS = 'urls'; 
