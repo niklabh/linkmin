@@ -19,7 +19,7 @@ var urlShortner = {
     var response = {};
 
     redis.hget(URLS, key, function (err, result) {
-      if (!error && result) {
+      if (!err && result) {
         response = {
           result: 'success',
           shorturl: '' + req.protocol + req.host + '/' + key,
@@ -29,7 +29,7 @@ var urlShortner = {
         response = {
           result: 'failure',
           message: 'Failed to get URL',
-          reason: err.message || 'Unknown problem'
+          reason: err ? err.message : 'Unknown problem'
         };
       }
       res.json(response);
