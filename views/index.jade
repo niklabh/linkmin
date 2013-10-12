@@ -1,13 +1,12 @@
 extends layout
 
 block content
-  a(href='https://github.com/niklabh/miniUrl')
-    img(style='position: absolute; top: 0; right: 0; border: 0;' src='http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png' alt='Fork me on GitHub')
+  include gitRibbon
   .container
     h1= title
     h2 Welcome to #{title}
     h3 Enter URL to be shortned
-    form#urlForm(method='post' action='/shortner', autocomplete='on')
+    form#urlForm(method='post', action='/shortner', autocomplete='on')
       .url
         label(for='url') URL:
         input#url(name='url', type='url', required)
@@ -17,4 +16,5 @@ block content
       .submit(style="margin:30px")
         input#submit(type='submit', value='Shorten URL')
     include links
+    include donate
   script(src='/javascripts/client.js')
