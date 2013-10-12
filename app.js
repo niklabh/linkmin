@@ -1,5 +1,9 @@
 "use strict";
-
+//node time
+require('nodetime').profile({
+    accountKey: '0ddb97e79137934714f3c2f882be1d8fe97e1c44', 
+    appName: 'Node.js Application'
+  });
 /**
  * Module dependencies.
  */

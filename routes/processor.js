@@ -6,7 +6,7 @@ var util = require('util');
 var redis = require('./lib/redis');
 
 var URLS = 'urls';
-var HOST = 'http://localhost:3000';
+var HOST = 'http://linkm.in';
 
 ///////////////////////// Module //////////////////////////////
 // UI Controller
