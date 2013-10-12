@@ -32,6 +32,11 @@ miniUrl is a simple url shortner written in node.js, expressjs and redis technol
 	fork me on github
 	find suitable place to publish
 	bitcoin donate
+	nginx
+	passport
+	error on already existing links
+	remove links
+	edit links
 	etc et al.
 
 #  Author

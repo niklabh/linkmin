@@ -6,7 +6,7 @@ block content
     h1= title
     h2 Welcome to #{title}
     h3 Enter URL to be shortned
-    form#urlForm(method='post', action='/shortner', autocomplete='on')
+    form#urlForm(method='post', action='/shortner/create', autocomplete='on')
       .url
         label(for='url') URL:
         input#url(name='url', type='url', required)

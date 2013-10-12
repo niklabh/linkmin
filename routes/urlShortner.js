@@ -12,10 +12,10 @@ var HOST = 'http://localhost:3000';
 var urlShortner = {
 	// get url
 	get: function (req, res, next) {
-		if (!req.param.key)
+		if (!req.body.key)
       return next(new Error("Missing param key"));
 
-    var key = req.params.key;
+    var key = req.body.key;
     var response = {};
 
     redis.hget(URLS, key, function (err, result) {
@@ -42,7 +42,7 @@ var urlShortner = {
     if (!req.body.url)
       return next(new Error("Missing param url"));
     // TODO: strip /-* etc like dangerous chars from key
-    var key = req.body.key || keyGen(5);
+    var key = (req.body.key || keyGen(5)) + '';
 
     // TODO: strip http(s):// from url before saving
     var url = req.body.url+'';
@@ -73,8 +73,12 @@ var urlShortner = {
               url: HOST + '/' + key,
               longUrl: url
             };
-            if (!req.session.links) req.session.links = [];
-            req.session.links.push(response);
+            if (!req.session.links) req.session.links = {};
+            req.session.links[key] = {
+              key: key,
+              url: HOST + '/' + key,
+              longUrl: url
+            };
           }
           res.json(response);
         });
@@ -112,6 +116,7 @@ var urlShortner = {
           message: 'Deleted shortened Url',
           url: '' + req.protocol + req.host + '/' + key,
         };
+        delete req.session.links[key];
       }
       res.json(response);
     });

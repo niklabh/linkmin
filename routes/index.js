@@ -18,13 +18,13 @@ module.exports = function (app) {
 
 
   /////////////////////////////// API /////////////////////////////////////
-  app.get('/shortner/:key', mw.nocache, urlShortner.get, processor.error);
+  app.post('/shortner/fetch', mw.nocache, urlShortner.get, processor.error);
 
-  app.post('/shortner', mw.nocache, urlShortner.create, processor.error);
+  app.post('/shortner/create', mw.nocache, urlShortner.create, processor.error);
 
-  app.put('/shortner', mw.nocache, urlShortner.update, processor.error);
+  app.post('/shortner/update', mw.nocache, urlShortner.update, processor.error);
 
-  app.delete('/shortner', mw.nocache, urlShortner.delete, processor.error);
+  app.post('/shortner/delete', mw.nocache, urlShortner.delete, processor.error);
   //////////////////////////////// API ////////////////////////////////////
 };
 
