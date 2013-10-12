@@ -17,7 +17,7 @@
     "url": "git+ssh://git@github.com/niklabh/miniUrl.git"
   },
   "devDependencies": {
-    "nodeunit": "latest",
+    "nodetime": "latest",
     "promise": "git://github.com/kriszyp/node-promise.git",
     "nodeunit": "0"
   },
