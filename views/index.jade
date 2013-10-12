@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .container
+    h1= title
+    h2 Welcome to #{title}
+    h3 Enter URL to be shortned
+    form#urlForm(method='post' action='/shortner', autocomplete='on')
+      .url
+        label(for='url') URL:
+        input#url(name='url', type='url', required)
+      .key
+        label(for='key') KEY: #{host}/
+        input#key(name='key', type='text')
+      .submit(style="margin:30px")
+        input#submit(type='submit', value='Shorten URL')
+    include links
+  script(src='/javascripts/client.js')

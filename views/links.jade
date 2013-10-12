@@ -1,0 +1,10 @@
+table#links
+  tr
+    th miniURL
+    th longURL
+  each entry in links
+    tr
+      td
+        a(target='_blank', href='#{entry.url}') #{entry.url}
+      td
+        a(target='_blank', href='#{entry.longUrl}') #{entry.longUrl}

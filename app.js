@@ -1,8 +1,5 @@
 "use strict";
 
-// look for monitoring
-require('look').start();
-
 /**
  * Module dependencies.
  */

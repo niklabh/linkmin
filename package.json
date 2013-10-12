@@ -6,20 +6,19 @@
     "test": "nodeunit test"
   },
   "dependencies": {
-    "express": "*",
+    "express": "3",
     "jade": "*",
-    "redis": "*",
-    "request": "*",
-    "underscore": "*"
+    "redis": "0",
+    "request": "2",
+    "underscore": "1"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/niklabh/miniUrl.git"
   },
   "devDependencies": {
-    "look": "*",
     "promise": "git://github.com/kriszyp/node-promise.git",
-    "nodeunit": "*"
+    "nodeunit": "0"
   },
   "author": "Nikhil Ranjan @niklabh811@gmail.com"
 }

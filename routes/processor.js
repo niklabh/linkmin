@@ -6,13 +6,19 @@ var util = require('util');
 var redis = require('./lib/redis');
 
 var URLS = 'urls';
+var HOST = 'http://localhost:3000';
 
 ///////////////////////// Module //////////////////////////////
 // UI Controller
 var processor = {
   // handle all requests
   index: function (req, res, next) {
-    res.send("Awesome HomePage");
+    var locals = {
+      title: 'miniUrl',
+      host: HOST,
+      links: req.session.links || []
+    };
+    res.render('index', locals);
   },
 
   // url redirector

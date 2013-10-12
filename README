@@ -26,6 +26,11 @@ miniUrl is a simple url shortner written in node.js, expressjs and redis technol
 # Still to do
 
 	User Auth
+	Minify
+	Bootstrap
+	filter http://[url] and [url]
+	fork me on github
+	find suitable place to publish
 	etc et al.
 
 #  Author

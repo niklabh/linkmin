@@ -5,7 +5,9 @@ var util = require('util');
 var keyGen = require('./lib/urlUtils').randomString;
 var redis = require('./lib/redis');
 
-var URLS = 'urls'; 
+var URLS = 'urls';
+var HOST = 'http://localhost:3000';
+
 ///////////////////////// Module //////////////////////////////
 var urlShortner = {
 	// get url
@@ -46,24 +48,37 @@ var urlShortner = {
     var url = req.body.url+'';
 
     var response = {};
-    
-    redis.hset(URLS, key, url, function(err){
-      if (err) {
-        util.log(err.message);
+
+    redis.hexists(URLS, key, function(err, exists){
+      if(!err && exists) {
         response = {
           result: 'failure',
           message: 'Failed to create shortened URL',
-          reason: err.message || 'Unknown problem'
+          reason: 'Url already Exist'
         };
+        res.json(response);
       } else {
-        response = {
-          result: 'success',
-          message: 'Created shortened Url',
-          url: '' + req.protocol + req.host + '/' + key,
-          longUrl: url
-        };
+        redis.hset(URLS, key, url, function(err){
+          if (err) {
+            util.log(err.message);
+            response = {
+              result: 'failure',
+              message: 'Failed to create shortened URL',
+              reason: err.message || 'Unknown problem'
+            };
+          } else {
+            response = {
+              result: 'success',
+              message: 'Created shortened Url',
+              url: HOST + '/' + key,
+              longUrl: url
+            };
+            if (!req.session.links) req.session.links = [];
+            req.session.links.push(response);
+          }
+          res.json(response);
+        });
       }
-      res.json(response);
     });
   },
 
