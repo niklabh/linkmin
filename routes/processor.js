@@ -14,7 +14,7 @@ var processor = {
   // handle all requests
   index: function (req, res, next) {
     var locals = {
-      title: 'miniUrl',
+      title: 'linkMin',
       host: HOST,
       links: req.session.links || []
     };
