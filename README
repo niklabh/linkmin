@@ -29,7 +29,7 @@ body ->
 [create Url] post /shortner/create
 body ->
 	url // [mandatory] url to be shortened
-	key // [optionsal] key for the url
+	key // [optional] key for the url
 
 [delete Url] post /shortner/delete
 	key // [mandatory] key to be deleted
