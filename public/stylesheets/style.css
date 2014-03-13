@@ -10,3 +10,14 @@ a {
 #links td {
 	padding: 5px;
 }
+.left {
+  margin:30px;
+  display: block;
+  float: left;
+}
+.clear {
+  clear:both;
+}
+#restorekey {
+  width: 5em;
+}

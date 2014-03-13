@@ -34,12 +34,13 @@ app.configure(function () {
 });
 
 // development only
-//app.configure('development', function () {
+app.configure('development', function () {
 	app.use(express.logger('dev'));
 	app.use(app.router);
   app.use(express.errorHandler());
-//});
+});
 
+//production
 app.configure('production', function () {
   express.logger.token('istDate', function (req, res) {
     return new Date();
