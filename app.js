@@ -1,18 +1,16 @@
 "use strict";
-//node time
-require('nodetime').profile({
-    accountKey: '0ddb97e79137934714f3c2f882be1d8fe97e1c44', 
-    appName: 'linkmin'
-  });
+
+var config = require('./config');
 /**
  * Module dependencies.
  */
+//node time
+require('nodetime').profile(config.nodetime);
 var express = require('express');
 var http = require('http');
 var path = require('path');
 var util = require('util');
 var proc = require('./bin/proc');
-//var config = require('url-config');
 
 var app = express();
 
@@ -26,7 +24,7 @@ app.configure(function () {
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser('1a2b3c4d5e6f'));
-        var RedisStore = require('connect-redis')(express);
+  var RedisStore = require('connect-redis')(express);
 	app.use(express.session({
 		secret: 'niklabh@git',
 		store: new RedisStore(),

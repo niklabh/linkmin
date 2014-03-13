@@ -2,8 +2,11 @@
 
 var util = require('util');
 var redis = require('redis');
+var config = require('./config').redis;
 
 function RedisClient() {
+  if (config && config.host && config.port)
+    return redis.createClient(config.port, config.host);
   return redis.createClient();
 }
 

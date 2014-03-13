@@ -11,7 +11,9 @@
     "redis": "*",
     "request": "2",
     "underscore": "1",
-    "connect-redis": "1.4.6"
+    "connect-redis": "1.4.6",
+    "optimist": "*",
+    "recluster": "*"
   },
   "repository": {
     "type": "git",
