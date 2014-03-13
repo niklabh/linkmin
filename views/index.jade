@@ -5,25 +5,9 @@ block content
   .container
     h1= title
     h2 Welcome to #{title}
-    p URL shortner service with Analytics and Cloud Storage of links
-    form#urlForm(method='post', action='/shortner/create', autocomplete='on')
-      .url.left
-        label(for='url') URL:
-        input#url(name='url', type='url', required)
-      .key.left
-        label(for='key') KEY: #{host}/
-        input#key(name='key', type='text')
-      .submit.left
-        input#submit(type='submit', value='Shorten URL')
-    .clear
-    .restore 
-      | Current session key: 
-      b #{key}
-      form(action='/', method='post', data-ajax='false')
-        lable Restore session: 
-        input#restorekey(name='key', type='text', value='')
-        input#restorebutton(type='submit', value='Restore')
-    br
+    h4 URL shortner service with Analytics and Cloud Storage of links
+    include restore
+    include form
     include links
     include donate
   script(src='/javascripts/client.js')

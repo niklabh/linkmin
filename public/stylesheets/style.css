@@ -2,16 +2,18 @@ body {
   padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
 }
-
+#links th {
+  text-align: center;
+}
 #links td {
 	padding: 5px;
+  text-align: center;
 }
 .left {
-  margin:30px;
+  margin:10px;
   display: block;
   float: left;
 }
@@ -20,4 +22,12 @@ a {
 }
 #restorekey {
   width: 5em;
+}
+#key {
+  width: 5em;
+  color: #666;
+  padding: 1px 5px;
+}
+#url {
+
 }
