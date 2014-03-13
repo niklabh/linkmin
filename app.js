@@ -11,6 +11,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var util = require('util');
+var proc = require('./bin/proc');
 //var config = require('url-config');
 
 var app = express();
@@ -25,8 +26,10 @@ app.configure(function () {
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser('1a2b3c4d5e6f'));
+        var RedisStore = require('connect-redis')(express);
 	app.use(express.session({
 		secret: 'niklabh@git',
+		store: new RedisStore(),
 		key: 'nikku5185811#'
 	}));
 	app.use(express.static(path.join(__dirname, 'public')));
@@ -61,6 +64,8 @@ http.createServer(app)
   .listen(app.get('port'), function () {
     util.log("Url server listening on port " + app.get('port') + ' in ' + (process.env.NODE_ENV || 'development'));
   });
+
+proc.init(app);
 
 process.on('uncaughtException', function(err){
   util.log(err.message);

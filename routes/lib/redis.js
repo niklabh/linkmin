@@ -20,7 +20,7 @@ var t = setTimeout(function () {
 
 RedisClient.on('ready', function () {
   clearTimeout(t);
-  util.log('REDIS is now connected');
+  //util.log('REDIS is now connected');
 });
 
 module.exports = RedisClient;
