@@ -2,11 +2,13 @@
 "use strict";
 
 var util = require('util');
+var async = require('async');
 var keyGen = require('./lib/urlUtils').randomString;
 var redis = require('./lib/redis');
+var config = require('../config');
 
 var URLS = 'urls';
-var HOST = 'http://linkm.in';
+var HOST = config.host;
 
 ///////////////////////// Module //////////////////////////////
 var urlShortner = {
@@ -119,6 +121,39 @@ var urlShortner = {
         delete req.session.links[key];
       }
       res.json(response);
+    });
+  },
+
+  saveMetrics: function (req, res, next) {
+    // move forward
+    next();
+
+    var key = req.params.key;
+    redis.incr(key, function (error) {
+      if (error) {
+        util.log("Error incrementing metrics : " + util.inspect(error));
+      }
+    });
+  },
+
+  fetchMetrics: function (req, res, next) {
+    var links = req.session.links;
+
+    if(!links) {
+      return next();
+    }
+
+    function iteration(key, cb) {
+      redis.get(key, function(error, hits){
+        if (error) {
+          util.log("Error fetching metrics : " + util.inspect(error));
+        }
+        links[key].hits = hits || "0";
+        cb();
+      });
+    }
+    async.each(Object.keys(links), iteration, function (err) {
+      next();
     });
   }
 };

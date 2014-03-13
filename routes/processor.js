@@ -5,10 +5,12 @@
 var util = require('util');
 var redis = require('./lib/redis');
 var keyGen = require('./lib/urlUtils').randomString;
+var extend = require('./lib/urlUtils').extend;
+var config = require('../config');
 
 var URLS = 'urls';
 var KEYS = 'keys';
-var HOST = 'http://linkm.in';
+var HOST = config.host;
 
 ///////////////////////// Module //////////////////////////////
 // UI Controller
@@ -21,7 +23,8 @@ var processor = {
         if (!error && result) {
           try {
             req.session.key = key;
-            req.session.links = (req.session.links || []).concat(JSON.parse(result));  
+            result = JSON.parse(result);
+            req.session.links = extend({}, req.session.links || {}, result);  
           } catch (e) {
             redis.hdel(KEYS, key);
             req.session.key = null;
@@ -38,10 +41,11 @@ var processor = {
   saveSession: function (req, res, next) {
     // move forward
     var key = req.session.key = req.session.key || keyGen(8);
-    var data = [];
+    var data;
+
     next();
     
-    if (req.session.links && req.session.links.length) {
+    if (req.session.links && Object.keys(req.session.links).length) {
       data = JSON.stringify(req.session.links);
       redis.hset(KEYS, key, data, function (error) {
         if (error) {

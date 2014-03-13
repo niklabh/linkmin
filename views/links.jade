@@ -2,12 +2,15 @@
   table#links
     tr
       th Mini URL
+      th Total Hits
       th Long URL
       th Delete
     each entry in links
       tr
         td
           a(target='_blank', href='#{entry.url}', style='color:green') #{entry.url}
+        td
+          b #{entry.hits}
         td
           a(target='_blank', href='#{entry.longUrl}', style='color:blue') #{entry.longUrl}
         td

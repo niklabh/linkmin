@@ -11,9 +11,9 @@ var mw = require('./middleware');
 
 module.exports = function (app) {
   /////////////////////////// UI ////////////////////////////////
-  app.all('/', processor.restoreSession, processor.saveSession, processor.index, processor.error);
+  app.all('/', processor.restoreSession, processor.saveSession, urlShortner.fetchMetrics, processor.index, processor.error);
 
-  app.get('/:key', processor.redirector, processor.error);
+  app.get('/:key', urlShortner.saveMetrics, processor.redirector, processor.error);
   //////////////////////////// UI ////////////////////////////////
 
 

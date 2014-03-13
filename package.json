@@ -13,7 +13,8 @@
     "underscore": "1",
     "connect-redis": "1.4.6",
     "optimist": "*",
-    "recluster": "*"
+    "recluster": "*",
+    "async": "*"
   },
   "repository": {
     "type": "git",
