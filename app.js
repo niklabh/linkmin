@@ -33,7 +33,7 @@ app.configure(function () {
 	app.use(express.static(path.join(__dirname, 'public')));
 });
 
-// development only
+// development
 app.configure('development', function () {
 	app.use(express.logger('dev'));
 	app.use(app.router);
@@ -50,7 +50,7 @@ app.configure('production', function () {
   }));
   //app.use('/', require('./routes/lib/authenticate'));
   app.use(app.router); // use router provided by express
-  //app.use(require('./routes/lib/error')); // defines route to handle errors for all requests
+  app.use(require('./routes/lib/error')); // defines route to handle errors for all requests
 });
 
 require('./routes')(app);

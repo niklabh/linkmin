@@ -77,22 +77,6 @@ var processor = {
         res.send(404, "Oops! You have found a dead link!!");
       }
     });
-  },
-
-  // error handler to reverse cart checkout
-  error: function(err, req, res, next) {
-    if(!err) {
-      return next();
-    }
-    res.status(err.code || 400);
-    var response = {
-      code : err.code || 400,
-      message : err.message || "Unknown Error",
-    };
-    util.log(err.message);
-    util.log(err.stack);
-
-    res.send(response);
   }
 };
 

@@ -11,20 +11,21 @@ var mw = require('./middleware');
 
 module.exports = function (app) {
   /////////////////////////// UI ////////////////////////////////
-  app.all('/', processor.restoreSession, processor.saveSession, urlShortner.fetchMetrics, processor.index, processor.error);
+  app.all('/', processor.restoreSession, processor.saveSession, urlShortner.fetchMetrics, processor.index);
 
-  app.get('/:key', urlShortner.saveMetrics, processor.redirector, processor.error);
+  app.get('/:key', urlShortner.saveMetrics, processor.redirector);
   //////////////////////////// UI ////////////////////////////////
 
-
   /////////////////////////////// API /////////////////////////////////////
-  app.post('/shortner/fetch', mw.nocache, urlShortner.get, processor.error);
+  app.post('/shortner/*', mw.nocache);
 
-  app.post('/shortner/create', mw.nocache, urlShortner.create, processor.error);
+  app.post('/shortner/fetch', urlShortner.get);
 
-  app.post('/shortner/update', mw.nocache, urlShortner.update, processor.error);
+  app.post('/shortner/create', urlShortner.create);
 
-  app.post('/shortner/delete', mw.nocache, urlShortner.delete, processor.error);
+  app.post('/shortner/update', urlShortner.update);
+
+  app.post('/shortner/delete', urlShortner.delete);
   //////////////////////////////// API ////////////////////////////////////
 };
 
