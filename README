@@ -46,16 +46,11 @@ body ->
 
 # Still to do
 
-	User Auth
 	Minify
 	Bootstrap
 	filter http://[url] and [url]
-	nginx
-	passport
 	error on already existing links
 	edit links
-	hit count
-	analytics	
 	etc et al.	
 
 

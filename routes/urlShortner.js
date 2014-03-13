@@ -22,19 +22,23 @@ var urlShortner = {
 
     redis.hget(URLS, key, function (err, result) {
       if (!err && result) {
-        response = {
-          result: 'success',
-          shorturl: '' + req.protocol + req.host + '/' + key,
-          longUrl: result
-        };
+        redis.get(key, function(error, hits){
+          response = {
+            result: 'success',
+            shorturl: '' + req.protocol + req.host + '/' + key,
+            longUrl: result,
+            hits: Number(hits) || 0
+          };
+          res.json(response);
+        });
       } else {
         response = {
           result: 'failure',
           message: 'Failed to get URL',
           reason: err ? err.message : 'Unknown problem'
         };
+        res.json(response);
       }
-      res.json(response);
     });
 	},
 
