@@ -1,0 +1,11 @@
+form#urlForm(method='post', action='/shortner/create', autocomplete='on')
+  .url.left
+    label(for='url') URL:
+    input#url(name='url', type='url', placeholder='Enter URL', required)
+  .key.left
+    label(for='key') KEY: #{host}/
+    input#key(name='key', type='text', placeholder='Key')
+  .submit.left
+    input#submit(type='submit', value='Shorten URL')
+.clear
+    
