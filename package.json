@@ -9,6 +9,7 @@
     "express": "3",
     "jade": "*",
     "redis": "*",
+    "hiredis": "*",
     "request": "2",
     "underscore": "1",
     "connect-redis": "1.4.6",
