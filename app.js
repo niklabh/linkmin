@@ -4,10 +4,7 @@ var config = require('./config');
 /**
  * Module dependencies.
  */
-//node time
-if (config.nodetime) {
-  require('nodetime').profile(config.nodetime);  
-}
+
 var express = require('express');
 var http = require('http');
 var path = require('path');
