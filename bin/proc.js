@@ -117,10 +117,6 @@ var proc = {
     setupUGID(argv.u);
     reload(argv);
     setupHandlers();
-    fs.unlink('public/system/maintenance.html', function (err, res) {
-      // do nothing - the callback is merely to prevent the error from
-      // being thrown
-    });
   }
 };
 
