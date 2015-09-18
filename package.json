@@ -22,7 +22,6 @@
     "url": "git+ssh://git@github.com/niklabh/linkmin.git"
   },
   "devDependencies": {
-    "nodetime": "latest",
     "promise": "git://github.com/kriszyp/node-promise.git",
     "nodeunit": "0"
   },
