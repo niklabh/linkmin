@@ -10,6 +10,7 @@ var http = require('http');
 var path = require('path');
 var util = require('util');
 var proc = require('./bin/proc');
+var RedisStore = require('connect-redis')(express);
 
 var app = express();
 
@@ -23,11 +24,12 @@ app.configure(function () {
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser('1a2b3c4d5e6f'));
-  var RedisStore = require('connect-redis')(express);
 	app.use(express.session({
 		secret: 'niklabh@git',
-		store: new RedisStore(),
-		key: 'nikku5185811#'
+		store: new RedisStore({
+			host: process.env.REDIS_URL || '127.0.0.1'
+		}),
+		key: '123@#$12333'
 	}));
 	app.use(express.static(path.join(__dirname, 'public')));
 });
