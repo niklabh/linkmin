@@ -1,5 +1,7 @@
 "use strict";
 
+var util = require('util');
+
 module.exports = function error(err, req, res, next) {
   res.status(err.code || 400);
   var response = {
