@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "scripts": {
     "start": "node app.js",
-    "test": "exit 0"
+    "test": "exit 0",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "express": "4.0.0",
+    "express": "4.16.0",
     "jade": "*",
     "redis": "*",
     "hiredis": "*",
@@ -15,7 +17,8 @@
     "connect-redis": "1.4.6",
     "optimist": "*",
     "recluster": "*",
-    "async": "*"
+    "async": "*",
+    "snyk": "^1.108.2"
   },
   "repository": {
     "type": "git",
@@ -25,5 +28,6 @@
     "promise": "git://github.com/kriszyp/node-promise.git",
     "nodeunit": "0"
   },
-  "author": "Nikhil Ranjan @niklabh811@gmail.com"
+  "author": "Nikhil Ranjan @niklabh811@gmail.com",
+  "snyk": true
 }
