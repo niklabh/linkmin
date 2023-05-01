@@ -1,4 +1,4 @@
-# linkMin
+# linkMin URL shortner
 
 http://linkm.in
 
