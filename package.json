@@ -5,7 +5,8 @@
     "start": "node app.js",
     "test": "exit 0",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "express": "4.16.0",
@@ -18,7 +19,7 @@
     "optimist": "*",
     "recluster": "*",
     "async": "*",
-    "snyk": "^1.108.2"
+    "snyk": "^1.189.0"
   },
   "repository": {
     "type": "git",
